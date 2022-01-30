@@ -23,4 +23,4 @@ User can:
 
 ### Screenshots & Gifs
 
-![Book Store App Gif](http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4)
+![Screen Shot 2022-01-30 at 8 33 23 PM](https://user-images.githubusercontent.com/69568555/151712605-21c44968-d90c-455c-81da-318d2e7cb98e.png)
