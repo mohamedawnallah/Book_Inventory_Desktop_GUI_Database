@@ -3,7 +3,9 @@ from tkinter import *
 from turtle import back
 from tkinter import messagebox
 from matplotlib.pyplot import title
-import backend
+from backend import Database
+
+database = Database('books.db')
 
 def get_selected_row(event):
         try:
@@ -32,12 +34,12 @@ def fill_entries():
 
 def view_command():
     list1.delete(0,END)
-    for row in backend.view():
+    for row in database.view():
         list1.insert(END,row)
 
 def search_command():
     
-    search_results = backend.search(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    search_results = database.search(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
     print(search_results)
     if   search_results:
         list1.delete(0,END)
@@ -47,7 +49,7 @@ def search_command():
         popup_warning("Please provide AT LEAST one parameter so we can search")
 
 def add_command():
-    val = backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    val = database.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
     if val:
         list1.delete(0,END)
         list1.insert(END,title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
@@ -56,14 +58,14 @@ def add_command():
 
 def delete_command():
     try:
-        backend.delete(selected_tuple[0])
+        database.delete(selected_tuple[0])
         view_command() 
     except NameError:
         popup_warning("Please SELECT the book you wanna delete first")
 
 def update_command():
     try:
-       val = backend.update(selected_tuple[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+       val = database.update(selected_tuple[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
        if val:
             list1.delete(0,END)
             list1.insert(END,title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
